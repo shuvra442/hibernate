@@ -67,7 +67,7 @@ public class App
 
         Session session= factory.openSession();
         Transaction transaction=  session.beginTransaction();
-
+//       save the student data and aso save the course data in the student table without creating course table
         session.save(student);
         session.save(address);
 
