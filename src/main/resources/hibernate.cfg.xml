@@ -7,7 +7,7 @@
     <session-factory>
 
         <!--    hbm2ddl.auto :- create automatically table -->
-        <property name="hbm2ddl.auto"> create </property>
+        <property name="hbm2ddl.auto"> update </property>
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/hibernate</property>
         <property name="connection.username">root</property>

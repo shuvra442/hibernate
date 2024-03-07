@@ -2,6 +2,7 @@ package com.hibernate.mapDemo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -10,7 +11,7 @@ public class Answer {
     private int id;
     private String answer;
 
-    @OneToOne(mappedBy = "answer")
+   @ManyToOne
     private Question question;
 
     public Answer(){}

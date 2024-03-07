@@ -2,19 +2,20 @@ package com.hibernate.mapDemo;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Question {
     @Id
     private int id;
     private String question;
 
-    @OneToOne
-    @JoinColumn(name = "a_id")
-    private Answer answer;
+    @OneToMany(mappedBy = "question")
+    private List<Answer> answer;
 
     public Question(){}
 
-    public Question(int id, String questionId, String question, Answer answer) {
+    public Question(int id, String question, List<Answer> answer) {
         this.id = id;
         this.question = question;
         this.answer = answer;
@@ -37,11 +38,11 @@ public class Question {
         this.question = question;
     }
 
-    public Answer getAnswer() {
+    public List<Answer> getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Answer answer) {
+    public void setAnswer(List<Answer> answer) {
         this.answer = answer;
     }
 
