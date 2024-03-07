@@ -18,6 +18,8 @@
         <mapping class="com.hibernate.entity.StudentAddress"/>
         <mapping class="com.hibernate.mapDemo.Question"/>
         <mapping class="com.hibernate.mapDemo.Answer"/>
+        <mapping class="com.hibernate.mapDemos.Employee"/>
+        <mapping class="com.hibernate.mapDemos.Project"/>
 
     </session-factory>
 </hibernate-configuration>
