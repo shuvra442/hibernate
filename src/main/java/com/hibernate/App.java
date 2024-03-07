@@ -1,8 +1,5 @@
 package com.hibernate;
 
-import com.hibernate.entity.Course;
-import com.hibernate.entity.Student;
-import com.hibernate.entity.StudentAddress;
 import com.hibernate.mapDemo.Answer;
 import com.hibernate.mapDemo.Question;
 import org.hibernate.Session;
