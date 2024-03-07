@@ -3,6 +3,8 @@ package com.hibernate;
 import com.hibernate.entity.Course;
 import com.hibernate.entity.Student;
 import com.hibernate.entity.StudentAddress;
+import com.hibernate.mapDemo.Answer;
+import com.hibernate.mapDemo.Question;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,64 +17,24 @@ public class App
         SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         System.out.println(factory);
 
-//        1
-//        set student table data in database
-//        Student student=new Student();
-//        student.setId(2);
-//        student.setName("shuvra");
-//        student.setAddress("jasora");
+//        oneToOne mapping example
+        Question question=new Question();
+        question.setId(1);
+        question.setQuestion("what is java");
 
+        Answer answer=new Answer();
+        answer.setId(2);
+        answer.setAnswer("java is programming language");
+        question.setAnswer(answer);
 
-
-//        set studentAddress table data in database
-//        StudentAddress studentAddress=new StudentAddress();
-//        studentAddress.setVillage("jasora");
-//        studentAddress.setPoliceStation("pasnkura");
-//        studentAddress.setMunicipleArea(true);
-//        studentAddress.setState("west bengal");
-
-//     now define session to save data into database
-
-//       session.save(student);
-//       session.save(studentAddress);
-//       transaction.commit();
-
-//         2
-//        using get() and load() find data form database
-//       Student student1=session.get(Student.class, 2);
-//       System.out.println(student1);
-//       System.out.println(student1.getAddress());
-//
-//      StudentAddress address= session.load(StudentAddress.class,1);
-//        System.out.println(address.getPoliceStation());
-
-
-//        3 @Embeddable  annotation in java
-        Student student=new Student();
-        student.setId(2);
-        student.setName("nirupam");
-        student.setAddress("mecheda");
-
-        Course course=new Course();
-        course.setCourseName("Java FullStack");
-        course.setCourseDuration("six month");
-
-        StudentAddress address=new StudentAddress();
-        address.setVillage("jasora");
-        address.setPoliceStation("panskura");
-        address.setState("West Bengal");
-        address.setMunicipleArea(true);
-
-        student.setCourse(course);
-
-        Session session= factory.openSession();
-        Transaction transaction=  session.beginTransaction();
-//       save the student data and aso save the course data in the student table without creating course table
-        session.save(student);
-        session.save(address);
-
+        Session session=factory.openSession();
+        Transaction transaction=session.beginTransaction();
+        session.save(question);
+        session.save(answer);
         transaction.commit();
-        session.close();
+        Question qs =session.get(Question.class, 1);
+        System.out.println(qs.getQuestion());
+        System.out.println(qs.getAnswer().getAnswer());
         factory.close();
     }
 }
